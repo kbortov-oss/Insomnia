@@ -1,0 +1,30 @@
+name: Bug report
+description: Report a policy, networking, or build issue.
+title: "[Bug] "
+body:
+  - type: markdown
+    attributes:
+      value: Do not upload Wi-Fi passwords, SSIDs, Keychain exports, raw logs, display recordings, or system profiles. Describe the issue with redacted details. If sleep is still disabled, follow docs/recovery.md first.
+  - type: input
+    id: environment
+    attributes:
+      label: App version, macOS version, and Mac model
+    validations:
+      required: true
+  - type: dropdown
+    id: mode
+    attributes:
+      label: Mode or component
+      options: [Normal, Server, Travel, Build, Autostart, Other]
+  - type: textarea
+    id: behavior
+    attributes:
+      label: Steps and expected / actual behavior
+      description: Include power source, lid state, and whether you used Wi-Fi or USB, without private network names.
+    validations:
+      required: true
+  - type: textarea
+    id: recovery
+    attributes:
+      label: Recovery result
+      description: Say whether ordinary sleep was restored and whether another power utility was active. Do not run a new privileged experiment just to complete this field.

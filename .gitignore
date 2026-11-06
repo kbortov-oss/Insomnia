@@ -1,0 +1,33 @@
+# Build output and source/release archives
+.build/
+dist/
+*.app/
+*.dSYM/
+*.zip
+*.sha256
+.DS_Store
+__pycache__/
+*.pyc
+
+# Private settings, diagnostics, and sessions
+.env
+.env.*
+!.env.example
+.claude/
+.codex/
+verification/
+*.jsonl
+*.jsonl.previous
+*.log
+lease.json
+ready
+*.plist
+*.mobileprovision
+*.p12
+*.p8
+*.key
+*.pem
+auth.json
+.credentials.json
+.idea/
+.vscode/

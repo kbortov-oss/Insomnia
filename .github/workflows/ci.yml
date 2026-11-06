@@ -1,0 +1,30 @@
+name: macOS source checks
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: macos-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - name: Audit public source
+        run: python3 scripts/audit-source.py
+      - name: Offline policy and file-safety checks
+        run: ./scripts/check.sh
+      - name: Build the arm64 preview without launching it
+        run: ./scripts/build.sh
+      - name: Validate Python helper syntax and help
+        run: |
+          python3 -m py_compile macos/autostart.py macos/check_display.py
+          python3 macos/autostart.py --help
+          python3 macos/check_display.py --help
